@@ -4,7 +4,7 @@ import 'package:flutter_hooks/flutter_hooks.dart';
 class DataService {
   final ValueNotifier<List> tableStateNotifier = new ValueNotifier([]);
   var chaves = ["name", "style", "ibu"];
-  var colunas = ["Nome", "Estilo", "IBU"];
+  var colunas = ["Coluna", "Coluna", "Coluna"];
 
   void carregar(index) {
     var carregadores = [
@@ -104,11 +104,11 @@ class NewNavBar extends HookWidget {
 
   @override
   Widget build(BuildContext context) {
-    var state = useState(1);
-
+    var state = useState(0);
     return BottomNavigationBar(
         onTap: (index) {
           state.value = index;
+          print(state.value);
           itemSelectedCallback(index);
         },
         currentIndex: state.value,
@@ -134,7 +134,7 @@ class DataTableWidget extends StatelessWidget {
 
   DataTableWidget(
       {this.jsonObjects = const [],
-      this.columnNames = const ["Nome", "Estilo", "IBU"],
+      this.columnNames = const ["Coluna", "Coluna", "Coluna"],
       this.propertyNames = const ["name", "style", "ibu"]});
 
   @override
